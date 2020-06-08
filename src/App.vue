@@ -75,10 +75,32 @@ export default {
 }
 
 .cards {
-  display: grid;
+  display: inline-grid;
   margin-left: auto;
   margin-right: auto;
   gap: 20px;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  width: auto;
+}
+
+@media (max-width: 1280px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>
