@@ -1,10 +1,10 @@
 <template>
   <main class="card-list">
     <Card
-      v-for="(date, idx) in dates"
-      :key="idx"
-      :title="date.title"
-      :endDate="formatDate(date.endDate)"
+      v-for="event in events"
+      :key="event._id"
+      :title="event.title"
+      :endDate="formatDate(event.endDate)"
     />
   </main>
 </template>
@@ -12,44 +12,26 @@
 <script>
 import Card from "@/components/Card.vue";
 
+import DatabaseBureau from "@/data model/DatabaseBureau.js";
+
 export default {
   name: "CardList",
   components: {
     Card
   },
+  computed: {
+    events() {
+      return this.db.getEvents();
+    }
+  },
   data() {
     return {
-      dates: [
-        {
-          title: "День рождения",
-          endDate: "07.08.2020"
-        },
-        {
-          title: "Новый год",
-          endDate: "01.01.2021"
-        },
-        {
-          title: "Конец лета",
-          endDate: "01.09.2020"
-        },
-        {
-          title: "ЕГЭ по информатике",
-          endDate: "03.07.2020"
-        },
-        {
-          title: "ЕГЭ по русскому языку",
-          endDate: "06.07.2020"
-        },
-        {
-          title: "ЕГЭ по математике",
-          endDate: "10.07.2020"
-        }
-      ]
+      db: new DatabaseBureau()
     };
   },
   methods: {
     formatDate(date) {
-      const [day, month, year] = date.split(".");
+      const [year, month, day] = date.split("-");
       return new Date(year, month - 1, day);
     }
   }
