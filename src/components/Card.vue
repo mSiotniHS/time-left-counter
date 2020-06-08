@@ -1,6 +1,9 @@
 <template>
   <div class="card" :style="cssVars">
-    <h2>{{ title }} через</h2>
+    <div class="top">
+      <h2 class="title">{{ title }}</h2>
+      <p class="in">через</p>
+    </div>
     <table>
       <tr>
         <th>{{ daysLeft }}</th>
@@ -132,5 +135,14 @@ export default {
   flex-direction: column;
 
   justify-self: center;
+}
+
+.title,
+.in {
+  margin: 0;
+}
+
+.top {
+  margin: 16px 0 16px;
 }
 </style>
