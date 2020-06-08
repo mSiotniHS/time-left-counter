@@ -18,8 +18,8 @@ class DatabaseBureau {
   }
 
   addEvent(event) {
-    const { _id, ...rest } = event;
-    localStorage.setItem(_id, JSON.stringify(rest));
+    let id = `f${(~~(Math.random() * 1e8)).toString(16)}`;
+    localStorage.setItem(id, JSON.stringify(event));
   }
 
   getEvents() {
